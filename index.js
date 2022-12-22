@@ -13,9 +13,9 @@ app.get('/', (req, res) => {
   res.json({ info: 'Node.js, Express, and Postgres API' })
 })
 
-app.get('/users', (res, req) => {
+app.get('/products', (res, req) => {
   console.log('Hitting users');
-  db.getUsers(res, req);
+  db.getProducts(res, req);
 });
 
 const PORT = process.env.PORT || 3000;
