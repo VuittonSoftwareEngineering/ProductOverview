@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS styles (
   name VARCHAR(100),
   original_price NUMERIC,
   sale_price NUMERIC,
-  default_item BOOLEAN,
+  default_style BOOLEAN,
   FOREIGN KEY (product_id) REFERENCES products(id)
 );
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS skus (
 CREATE TABLE IF NOT EXISTS photos (
   id SERIAL PRIMARY KEY,
   style_id INT,
-  thumbnail_irl VARCHAR(100),
+  thumbnail_url VARCHAR(100),
   url VARCHAR(100),
   FOREIGN KEY (style_id) REFERENCES styles(id)
 );
