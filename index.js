@@ -20,9 +20,15 @@ app.get('/products/:product_id', (req, res) => {
   req.query.product_id = req.params.product_id;
   controller.getProducts(req, res);
 });
+
 app.get('/products/:product_id/styles', (req, res) => {
   req.query.product_id = req.params.product_id;
   controller.getStyles(req, res);
+});
+
+app.get('/products/:product_id/related', (req, res) => {
+  req.query.product_id = req.params.product_id;
+  controller.getRelated(req, res);
 });
 
 const PORT = process.env.PORT || 3000;

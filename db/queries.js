@@ -51,8 +51,58 @@ const getFeatures = (product_id) => {
     })
 }
 
+const getStyles = (product_id) => {
+  return pool.query(`SELECT * FROM styles WHERE product_id = ${product_id}`)
+    .then(res => {
+      console.log(res.rows);
+      return res.rows;
+    })
+    .catch(err => {
+      return err;
+    })
+}
+
+const getSkus = (style_ids) => {
+  const styleList = style_ids.join();
+  return pool.query(`SELECT * FROM skus WHERE style_id IN (${styleList})`)
+    .then(res => {
+      return res.rows;
+    })
+    .catch(err => {
+      console.log('logging error in getSkus');
+      return err;
+    })
+}
+
+const getPhotos = (style_ids) => {
+  const styleList = style_ids.join();
+  return pool.query(`SELECT * FROM photos WHERE style_id IN (${styleList})`)
+    .then(res => {
+      console.log(res.rows);
+      return res.rows;
+    })
+    .catch(err => {
+      return err;
+    })
+}
+
+const getRelated = (product_id) => {
+  return pool.query(`SELECT related_product_id FROM related WHERE current_product_id = ${product_id}`)
+  .then(res => {
+    console.log(res.rows);
+    return res.rows;
+  })
+  .catch(err => {
+    return err;
+  })
+}
+
 module.exports = {
   getProducts,
   getProduct,
-  getFeatures
+  getFeatures,
+  getStyles,
+  getSkus,
+  getPhotos,
+  getRelated
 }
