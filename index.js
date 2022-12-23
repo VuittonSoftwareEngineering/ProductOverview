@@ -2,12 +2,16 @@ require('dotenv').config();
 const express = require('express');
 const logger = require('./middleware/logger.js');
 const controller = require('./controllers');
+const morgan = require('morgan');
+const cors = require('cors');
 
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(logger);
+// app.use(logger);
+app.use(morgan('tiny'));
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.json({ info: 'Node.js, Express, and Postgres API' })

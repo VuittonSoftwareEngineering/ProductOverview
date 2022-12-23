@@ -30,7 +30,6 @@ const getProducts = function (req, res) {
 const getStyles = function (req, res) {
   db.getStyles(req.query.product_id)
     .then(styles => {
-      console.log(styles);
       const style_ids = styles.map(style => style.id);
       Promise.all([
         db.getSkus(style_ids),

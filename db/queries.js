@@ -32,7 +32,6 @@ const getProducts = (count) => {
 const getProduct = (product_id) => {
   return pool.query(`SELECT * FROM products WHERE id = ${product_id}`)
     .then(res => {
-      console.log(res.rows);
       return res.rows[0];
     })
     .catch(err => {
@@ -43,7 +42,6 @@ const getProduct = (product_id) => {
 const getFeatures = (product_id) => {
   return pool.query(`SELECT feature, value FROM features WHERE product_id = ${product_id}`)
     .then(res => {
-      console.log(res.rows);
       return res.rows;
     })
     .catch(err => {
@@ -54,7 +52,6 @@ const getFeatures = (product_id) => {
 const getStyles = (product_id) => {
   return pool.query(`SELECT * FROM styles WHERE product_id = ${product_id}`)
     .then(res => {
-      console.log(res.rows);
       return res.rows;
     })
     .catch(err => {
@@ -78,7 +75,6 @@ const getPhotos = (style_ids) => {
   const styleList = style_ids.join();
   return pool.query(`SELECT * FROM photos WHERE style_id IN (${styleList})`)
     .then(res => {
-      console.log(res.rows);
       return res.rows;
     })
     .catch(err => {
@@ -89,7 +85,6 @@ const getPhotos = (style_ids) => {
 const getRelated = (product_id) => {
   return pool.query(`SELECT related_product_id FROM related WHERE current_product_id = ${product_id}`)
   .then(res => {
-    console.log(res.rows);
     return res.rows;
   })
   .catch(err => {
