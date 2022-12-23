@@ -9,15 +9,50 @@ const pool = new Pool({
   port: process.env.DB_PORT,
 })
 
-const getProducts = (request, response) => {
-  pool.query('SELECT * FROM "products"', (error, results) => {
-    if (error) {
-      throw error
-    }
-    response.status(200).json(results.rows)
-  })
+// const getProducts = () => {
+//   return pool.query('SELECT * FROM products LIMIT 5', (error, results) => {
+//     if (error) {
+//       throw error
+//     }
+//     console.log('should be returning data here');
+//     return results.rows;
+//   })
+// }
+
+const getProducts = (count) => {
+  return pool.query(`SELECT * FROM products LIMIT ${count}`)
+    .then(res => {
+      return res.rows;
+    })
+    .catch(err => {
+      return err;
+    })
+}
+
+const getProduct = (product_id) => {
+  return pool.query(`SELECT * FROM products WHERE id = ${product_id}`)
+    .then(res => {
+      console.log(res.rows);
+      return res.rows[0];
+    })
+    .catch(err => {
+      return err;
+    })
+}
+
+const getFeatures = (product_id) => {
+  return pool.query(`SELECT feature, value FROM features WHERE product_id = ${product_id}`)
+    .then(res => {
+      console.log(res.rows);
+      return res.rows;
+    })
+    .catch(err => {
+      return err;
+    })
 }
 
 module.exports = {
-  getProducts: getProducts
+  getProducts,
+  getProduct,
+  getFeatures
 }

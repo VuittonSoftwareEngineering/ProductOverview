@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const logger = require('./middleware/logger.js');
-const db = require('./db/queries.js');
+const controller = require('./controllers');
 
 const app = express();
 
@@ -13,9 +13,16 @@ app.get('/', (req, res) => {
   res.json({ info: 'Node.js, Express, and Postgres API' })
 })
 
-app.get('/products', (res, req) => {
-  console.log('Hitting users');
-  db.getProducts(res, req);
+app.get('/products', (req, res) => {
+  controller.getProducts(req, res);
+});
+app.get('/products/:product_id', (req, res) => {
+  req.query.product_id = req.params.product_id;
+  controller.getProducts(req, res);
+});
+app.get('/products/:product_id/styles', (req, res) => {
+  req.query.product_id = req.params.product_id;
+  controller.getStyles(req, res);
 });
 
 const PORT = process.env.PORT || 3000;
