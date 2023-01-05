@@ -34,7 +34,6 @@ app.get('/products/:product_id/related', (req, res) => {
   req.query.product_id = req.params.product_id;
   controller.getRelated(req, res);
 });
-loaderio-f555338f0a0f0701522f5ca4cbca9bb8
 
 app.get('/loaderio-f555338f0a0f0701522f5ca4cbca9bb8', (req, res) => {
   res.send('loaderio-f555338f0a0f0701522f5ca4cbca9bb8');
