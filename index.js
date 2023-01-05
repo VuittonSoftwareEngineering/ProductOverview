@@ -34,9 +34,10 @@ app.get('/products/:product_id/related', (req, res) => {
   req.query.product_id = req.params.product_id;
   controller.getRelated(req, res);
 });
+loaderio-f555338f0a0f0701522f5ca4cbca9bb8
 
-app.get('/loaderio-fbc48b63fbfae9cf927007edb12a4609', (req, res) => {
-  res.send('loaderio-fbc48b63fbfae9cf927007edb12a4609');
+app.get('/loaderio-f555338f0a0f0701522f5ca4cbca9bb8', (req, res) => {
+  res.send('loaderio-f555338f0a0f0701522f5ca4cbca9bb8');
 });
 
 const PORT = process.env.PORT || 3000;
