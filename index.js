@@ -35,5 +35,9 @@ app.get('/products/:product_id/related', (req, res) => {
   controller.getRelated(req, res);
 });
 
+app.get('loaderio-419028a89594b7218aa393dfb86c845b', (req, res) => {
+  res.send('loaderio-419028a89594b7218aa393dfb86c845b');
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => { console.log(`listening on ${PORT}`); });
