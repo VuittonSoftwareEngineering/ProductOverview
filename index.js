@@ -10,7 +10,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // app.use(logger);
-app.use(morgan('dev'));
+// app.use(morgan('dev'));
 app.use(cors());
 
 app.get('/', (req, res) => {
